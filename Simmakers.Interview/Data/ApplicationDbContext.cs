@@ -8,6 +8,7 @@ namespace Simmakers.Interview.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
     }
 }
