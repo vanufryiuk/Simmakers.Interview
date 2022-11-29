@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simmakers.Interview", "Simmakers.Interview\Simmakers.Interview.csproj", "{5DA1E6B9-F892-4DFD-9D9B-DF276D1B14C0}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{46E37A99-B752-415F-BCD9-6A5B7AD20105}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5DA1E6B9-F892-4DFD-9D9B-DF276D1B14C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DA1E6B9-F892-4DFD-9D9B-DF276D1B14C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DA1E6B9-F892-4DFD-9D9B-DF276D1B14C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E37A99-B752-415F-BCD9-6A5B7AD20105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E37A99-B752-415F-BCD9-6A5B7AD20105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E37A99-B752-415F-BCD9-6A5B7AD20105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E37A99-B752-415F-BCD9-6A5B7AD20105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

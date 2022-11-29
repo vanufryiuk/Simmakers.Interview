@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  simmakers.interview:
+    image: ${DOCKER_REGISTRY-}simmakersinterview
+    build:
+      context: .
+      dockerfile: Simmakers.Interview/Dockerfile
+  cockroach:
+    image: cockroachdb/cockroach:latest-v22.1
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    command: start-single-node --insecure
+    volumes:
+      - "${PWD}/Data/crdb:/cockroach/cockroach-data"
