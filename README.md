@@ -31,3 +31,7 @@ Most important files:
 3. /Areas/Identity/Pages/Account/Manage/ManageAvatar.cshtml allows to upload or delete a blob (picture).
 4. /Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml is modified to delete blobs uploaded by the user as well as the rest of his/her personal data.
 5. /Pages/Index.cshtml is modified to display existing users.
+
+# P.S.
+
+Sorry for russian in some commit messages - VS created them automatically.
