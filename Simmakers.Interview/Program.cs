@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Minio;
+using Simmakers.Interview.Areas.Identity.Services;
 using Simmakers.Interview.Data;
+using Simmakers.Interview.Data.Models;
 
 Console.WriteLine("Initialization started.");
 
@@ -12,9 +15,31 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options
         .UseNpgsql(connectionString)
 );
+
+builder.Services.AddTransient(ctx =>
+{
+    var config = ctx.GetRequiredService<IConfiguration>();
+    var minioSection = config.GetRequiredSection("Minio");
+
+    var endpoint = minioSection.GetValue<string>("Endpoint");
+    var accessKey = minioSection.GetValue<string>("AccessKey");
+    var secretKey = minioSection.GetValue<string>("SecretKey");
+
+    var client = new MinioClient()
+        .WithEndpoint(endpoint)
+        .WithCredentials(accessKey, secretKey)
+        .Build();
+
+    return client;
+});
+
+builder.Services.AddTransient<IBucketOperations>(ctx => ctx.GetRequiredService<MinioClient>());
+builder.Services.AddTransient<IObjectOperations>(ctx => ctx.GetRequiredService<MinioClient>());
+builder.Services.AddTransient<ScopedFileManager>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 

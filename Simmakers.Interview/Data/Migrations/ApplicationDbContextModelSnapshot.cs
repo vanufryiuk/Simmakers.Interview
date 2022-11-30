@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Simmakers.Interview.Data;
+using Simmakers.Interview.Data.Models;
 using System;
 
 namespace Simmakers.Interview.Data.Migrations
@@ -70,7 +71,7 @@ namespace Simmakers.Interview.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+            modelBuilder.Entity<AppUser>(b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -121,6 +122,11 @@ namespace Simmakers.Interview.Data.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<string>("AvatarImageName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256)
+                        .IsRequired(false);
 
                     b.HasKey("Id");
 

@@ -72,7 +72,7 @@ namespace Simmakers.Interview.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+            modelBuilder.Entity("Simmakers.Interview.Data.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -121,6 +121,10 @@ namespace Simmakers.Interview.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("AvatarImageName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 

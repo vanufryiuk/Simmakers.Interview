@@ -1,0 +1,53 @@
+﻿@page
+@model ManageAvatarModel
+@{
+    ViewData["Title"] = "Manage Avatar";
+    ViewData["ActivePage"] = ManageNavPages.ManageAvatar;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>Your account has an avatar. This page allows you to manage it.</p>
+    </div>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var image in Model.ExistingImages)
+            {
+                <tr>
+                    <td><img src="../File?name=@image&user=@Model.UserId" height="50"></td>
+                    <td>@image</td>
+                    <td>
+                        <form method="post">
+                            <input name="imageName" type="hidden" value="@image" />
+                            <input asp-page-handler="selectImage" type="submit" value="Select" class="btn btn-success" />
+                            <input asp-page-handler="deleteImage" type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <form method="post" asp-page-handler="uploadImage" enctype="multipart/form-data">
+                    <td colspan="2">
+                        <input name="uploadedImage" type="file" accept="image/*" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Upload" class="btn btn-primary" />
+                    </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

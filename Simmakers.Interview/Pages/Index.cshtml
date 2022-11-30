@@ -4,7 +4,27 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Email Confirmed</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Users != null)
+    {
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td><img src="./Identity/Account/File?name=@user.AvatarImageName&user=@user.Id" height="50"></td>
+                <td>@user.UserName</td>
+                <td><a href="mailto:@user.Email">@user.Email</a></td>
+                <td>@user.EmailConfirmed</td>
+             </tr>
+        }
+    }
+    </tbody>
+</table>
