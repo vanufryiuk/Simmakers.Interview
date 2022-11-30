@@ -3,7 +3,7 @@
 ## How-To
 
 1. Clone the repo
-2. Open the solution with Visual Studio Code
+2. Open the solution with Visual Studio
 3. Run it with docker-compose
 4. Wait for the browser window to open
 5. Check out the user list on the index page
